@@ -1,0 +1,27 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Framework Comparison" type="home">
+  <main>
+    <p>
+      Benchmarking various front-end frameworks by setting 500 &lt;li&gt;
+      elements multiple times over 10 seconds. In addition, 30,000 extra
+      &lt;div&gt;s are added. Without this, all frameworks, except for Vue<sup
+        >*</sup
+      >, which was substantially slower, were essentialy the same.
+    </p>
+    <p>Please select a framework above to start test.</p>
+    <p>
+      <sup>*</sup> I'm not very familiar with Vue. If there are ways to optimize
+      it, please open a pull request. You can also make pull requests for any other
+      framework optimizations as well.
+    </p>
+  </main>
+</Layout>
+
+<style>
+  main {
+    max-width: 600px;
+  }
+</style>

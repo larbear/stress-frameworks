@@ -1,0 +1,67 @@
+---
+const lots = [...Array(30000).keys()];
+---
+
+<h1>
+  Vanilla (<span id="counter"></span>)
+</h1>
+
+<button id="run" style="margin-bottom: 1em">Run!</button>
+
+<div id="lots-o-numbers"></div>
+
+<script is:inline>
+(function () {
+  const text = [];
+  const lots = [...Array(30000).keys()]
+  const counter = document.getElementById("counter");
+  let endAt = Date.now() + 10000;
+
+  let count = 0;
+  let timeout = null;
+
+  const token = () => Math.random().toString(36).substring(2, 10);
+  const textNodes = [];
+  const countText = document.createTextNode("0");
+  counter.appendChild(countText);
+
+  document.getElementById("run").addEventListener("click", onRun);
+
+  function onRun() {
+    if (timeout) {
+      clearTimeout(timeout);
+    }
+    requestAnimationFrame(paint);
+    count = 0;
+    endAt = Date.now() + 10000;
+    timeout = setTimeout(go);
+  }
+
+  function create() {
+    const container = document.getElementById("lots-o-numbers");
+    for (let i = 0; i < lots.length; i++) {
+      const div = document.createElement("div");
+      text[i] = i;
+      textNodes[i] = document.createTextNode(text[i]);
+      div.appendChild(textNodes[i]);
+      container.appendChild(div);
+    }
+  }
+
+  function paint() {
+    countText.data = "" + count;
+    textNodes[5].data = lots[5];
+    requestAnimationFrame(paint);
+  }
+
+  function go() {
+    count++;
+    lots[5] = token();
+    if (Date.now() < endAt) {
+      timeout = setTimeout(go);
+    }
+  }
+
+  create();
+})();
+</script>

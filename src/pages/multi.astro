@@ -1,0 +1,22 @@
+---
+import Layout from "../layouts/Layout.astro";
+import React from "../components/React.jsx";
+import Svelte from "../components/Svelte.svelte";
+import Vue from "../components/Vue.vue";
+import Solid from "../components/Solid.jsx";
+import Vanilla from "../components/Vanilla.astro";
+
+const longList = false;
+---
+
+<Layout title="Welcome to Astro.">
+  <main>
+    Here we will try to run the list test found on arrowjs.com in various
+    frameworks.
+    <!-- <Svelte client:only="svelte" longList={longList} /> -->
+    <!-- <Solid client:only="solid" longList={longList} /> -->
+    <!-- <Vue client:only="vue" /> -->
+    <!-- <React client:only="react" longList={longList} /> -->
+    <Vanilla longList={longList} />
+  </main>
+</Layout>

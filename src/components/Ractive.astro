@@ -1,0 +1,57 @@
+---
+const lots = [...Array(30000).keys()];
+---
+<div id="page"></div>
+<div id="lots-o-numbers"></div>
+<script is:inline src="/ractive.js"></script>
+
+<script is:inline>
+let ractive;
+let endAt;
+let count = 0;
+
+const token = () => Math.random().toString(36).substring(2, 10);
+
+const tpl = `
+<h1>
+	Ractive (<span id="counter">{{count}}</span>)
+</h1>
+
+<button style="display:block; margin-bottom: 1em" on-click="@this.fire('start')">
+	Run!
+</button>
+
+{{#each lots}}<div>{{this}}</div>{{/each}}
+`;
+
+const go = () => {
+	// This is slower:
+	// ractive.set(`lots[5]`, token());
+
+	const lots = ractive.get("lots");
+	lots[5] = token();
+	ractive.set(`lots`, lots);
+	ractive.set("count", count++);
+
+	if (Date.now() < endAt) {
+		setTimeout(go);
+	}
+};
+
+ractive = new Ractive({
+	target: document.getElementById("lots-o-numbers"),
+	template: tpl,
+	data: {
+		count: 0,
+		lots: [...Array(30000).keys()]
+	}
+});
+
+ractive.on("start", function () {
+	count = 0;
+	ractive.set("count", 0);
+	endAt = Date.now() + 10000;
+	go();
+});
+
+</script>

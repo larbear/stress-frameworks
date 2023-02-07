@@ -1,0 +1,37 @@
+---
+import Layout from "../layouts/Layout.astro";
+import React from "../components/React.jsx";
+import Svelte from "../components/Svelte.svelte";
+import Solid from "../components/Solid.jsx";
+import SolidSignal from "../components/SolidSignal.jsx";
+import Vanilla from "../components/Vanilla.astro";
+import Ractive from "../components/Ractive.astro";
+import Vue from "../components/Vue.vue";
+
+export function getStaticPaths() {
+  return [
+    { params: { type: "react" } },
+    { params: { type: "solid" } },
+    { params: { type: "svelte" } },
+    { params: { type: "vue" } },
+    { params: { type: "vanilla" } },
+    { params: { type: "ractive" } },
+    { params: { type: "solidsignal" } },
+  ];
+}
+const { type } = Astro.params;
+
+const longList = true;
+---
+
+<Layout title="Framework Comparison" type={type}>
+  <main>
+    {type === "react" && <React client:only="react" />}
+    {type === "vue" && <Vue client:only="vue" />}
+    {type === "svelte" && <Svelte client:only="svelte" />}
+    {type === "solid" && <Solid client:only="solid" />}
+    {type === "solidsignal" && <SolidSignal client:only="solid" />}
+    {type === "vanilla" && <Vanilla />}
+    {type === "ractive" && <Ractive />}
+  </main>
+</Layout>

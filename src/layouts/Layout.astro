@@ -1,0 +1,68 @@
+---
+export interface Props {
+  title: string;
+  type?: string;
+}
+
+const { title } = Astro.props;
+const { type } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <div style="display:flex;gap: 16px">
+      <a class={type === "home" && "active"} href="/">Home</a>
+      <a class={type === "react" && "active"} href="/react">React</a>
+      <a class={type === "vue" && "active"} href="/vue">Vue</a>
+      <a class={type === "svelte" && "active"} href="/svelte">Svelte</a>
+      <a class={type === "solid" && "active"} href="/solid">SolidJS-Store</a>
+      <a class={type === "solidsignal" && "active"} href="/solidsignal">SolidJS-Signal</a>
+      <a class={type === "vanilla" && "active"} href="/vanilla">Vanillia</a>
+      <a class={type === "ractive" && "active"} href="/ractive">Ractive</a>
+    </div>
+    <slot />
+  </body>
+</html>
+<style is:global>
+  html {
+    font-family: system-ui, sans-serif;
+    background-color: #f6f6f6;
+  }
+  code {
+    font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
+      DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+  }
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 0;
+  }
+  li {
+    display: block;
+    width: 100px;
+    border: 1px solid var(--gray-l);
+    border-width: 0 1px 1px 0;
+    box-sizing: border-box;
+    padding: 0.25em;
+  }
+  a {
+    text-decoration: none;
+    color: navy;
+    font-weight: 400;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  a.active {
+    font-weight: 700;
+  }
+</style>
