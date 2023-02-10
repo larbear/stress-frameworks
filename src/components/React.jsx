@@ -36,9 +36,11 @@ function App() {
       <button style={{ marginBottom: "1em" }} onClick={() => onRun(list, setList, setCounter)}>
         Run!
       </button>
-      {list.map((i, j) => {
-        return <div key={i}>{i}</div>;
-      })}
+      <div id="lots-o-numbers">
+        {list.map((i, j) => {
+          return <div key={i}>{i}</div>;
+        })}
+      </div>
     </>
   );
 }

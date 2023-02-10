@@ -31,6 +31,8 @@
 	Run!
 </button>
 
-{#each lots as i}
-	<div key={i}>{i}</div>
-{/each}
+<div id="lots-o-numbers">
+	{#each lots as i}
+		<div key={i}>{i}</div>
+	{/each}
+</div>

@@ -27,7 +27,9 @@ export default {
 
 <template>
   <h1>Vue ({{ count }})</h1>
-  <template :key="index" v-for="(item, index) in lots">
-    <div>{{ item }}</div>
-  </template>
+  <div id="lots-o-numbers">
+    <template :key="index" v-for="(item, index) in lots">
+      <div>{{ item }}</div>
+    </template>
+  </div>
 </template>

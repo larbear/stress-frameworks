@@ -28,11 +28,13 @@ function Solid(props) {
     <>
       <h1>SolidJS ({count()})</h1>
 
-      <For each={list()}>
-        {(i) => {
-          return <div>{i}</div>;
-        }}
-      </For>
+      <div id="lots-o-numbers">
+        <For each={list()}>
+          {(i) => {
+            return <div>{i}</div>;
+          }}
+        </For>
+      </div>
     </>
   );
 }
