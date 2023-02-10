@@ -5,11 +5,9 @@ import Layout from "../layouts/Layout.astro";
 <Layout title="Framework Comparison" type="home">
   <main>
     <p>
-      Benchmarking various front-end frameworks by setting 500 &lt;li&gt;
-      elements multiple times over 10 seconds. In addition, 30,000 extra
-      &lt;div&gt;s are added. Without this, all frameworks, except for Vue<sup
-        >*</sup
-      >, which was substantially slower, were essentialy the same.
+      Benchmarking various front-end frameworks by adding 30,000 div elements
+      and then continually modifying one of the elements via the framework's
+      state mechanism, or direct to DOM in case of Vanilla.
     </p>
     <p>Please select a framework above to start test.</p>
     <p>
